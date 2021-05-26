@@ -1,24 +1,17 @@
 import React from "react";
-import styled from "styled-components"
+import Empty from "./components/Empty";
+import ChatWindow from "./containers/ChatWindow";
 
-const Styles = styled.div`
-width: 100%;
-.Main{
-    flex: 1 1 0;
-    background-color: rgba(08, 25, 27, 1);
-    height: 100%; 
-    width: 100%;
-}
 
-`
+const Main = ({ user, activeUserId }) => {
 
-const Main = () => {
-  return(
-      <Styles>
-                <main className="Main">Main Stuff</main>
- 
-      </Styles>
- 
-  )
+  const renderMainContent = () => {
+    if (!activeUserId) {
+      return <Empty user={user} activeUserId={activeUserId} />;
+    } else {
+        return <ChatWindow activeUserId={activeUserId} />;
+       }
+  };
+  return <main className="Main">{renderMainContent()}</main>;
 };
 export default Main;

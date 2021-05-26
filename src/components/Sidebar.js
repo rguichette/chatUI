@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import User from "../containers/User"
 
 
-const SidebarWrapper = styled.div`
+const Style = styled.div`
 
 
 .Sidebar{
@@ -29,13 +29,19 @@ const SidebarWrapper = styled.div`
 
 const Sidebar = ({contacts}) => {
   return (
-  <SidebarWrapper>
-        <aside className="Sidebar">
+    <Style>
+       <aside className="Sidebar">
 
-            {contacts.map(contact => <User user={contact} key={contact.user_id} />)}
+            {contacts.map(contact =>{ 
+
+            return <User user={contact} key={contact.user_id} />
+            
+            
+            })}
         
         
-        </aside>;
-  </SidebarWrapper>)
+        </aside>
+      </Style>
+  )
 };
 export default Sidebar;

@@ -6,12 +6,16 @@ import Main from '../Main'
 
 import _ from "lodash"
 
+
 function App() {
-  const {contacts} = store.getState()
+  const {contacts, user, activeUserId} = store.getState()
+
+  
   return (
     <div className="App" >
+      {console.log("change to arr",_.values(contacts))}
 <Sidebar contacts={_.values(contacts)}/>
-<Main/>
+<Main user={user} activeUserId={activeUserId}/>
     </div>
   );
 }
