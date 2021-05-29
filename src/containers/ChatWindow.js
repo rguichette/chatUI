@@ -5,7 +5,7 @@ import style from 'styled-components'
 import store from "../store";
 import Header from "../components/Header";
 import Chat from "../components/Chats";
-
+import MessageInput from "./MessageInput"
 const Style = style.div`
 .ChatWindow {
 
@@ -25,12 +25,12 @@ const ChatWindow = ({ activeUserId }) => {
   const activeUser = state.contacts[activeUserId];
   const activeMsgs = state.messages[activeUserId];
 
-  console.log("chat state",state);
   return (
     <Style>
     <div className="ChatWindow">
       <Header user={activeUser} />
       <Chat messages={_.values(activeMsgs)}/>
+      <MessageInput />
     </div></Style>
   );
 };

@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import style from 'styled-components';
 
+import MessageInput from '../containers/MessageInput'
+
 const Style = style.div`
 overflow-y: scroll;
 
 .Chats{
-  background-color: blue;
+//   background-color: blue;
   overflow-y: scroll;
 
 
@@ -53,6 +55,7 @@ overflow-y: scroll;
        }
   }
 
+
 `
 
 const Chat = ({ message }) => {
@@ -65,13 +68,46 @@ const Chat = ({ message }) => {
   ); 
 };
 class Chats extends Component {
-  render() {
+ constructor(props){
+    super(props);
+    this.chatsRef = React.createRef();
+} 
+
+
+componentDidMount(){
+    this.scrollToBottom();
+}
+
+componentDidUpdate(){
+    this.scrollToBottom();
+}
+
+
+scrollToBottom = ()=>{
+    // this.chatsRef.current.scrollTop = this.chatsRef.current.clientHeight;
+        // this.chatsRef.current.scrollTop = this.chatsRef.current.scrollHeight;
+console.log("scrolling!!!!!!!", this.chatsRef.current.children[this.chatsRef.current.children.length-1])
+// this.chatsRef.current.lastChild.scrollIntoView()
+// console.log("scrolling!!!!!!!", this.chatsRef.current.clientHeight)
+this.chatsRef.current.children[this.chatsRef.current.children.length-1].scrollIntoView();
+// this.chatsRef.current.scrollIntoView({behavior:"smooth"})
+    }
+
+
+  
+    render() {
+
+
+
     return (
        <Style>
-      <div className="Chats">
+      <div className="Chats" ref={this.chatsRef}>
         {this.props.messages.map(message => (
           <Chat message={message} key={message.number} />
-        ))} </div></Style>
+        ))} </div>
+    {/* <MessageInput/> */}
+
+        </Style>
         
     ); 
   }

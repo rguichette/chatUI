@@ -3,7 +3,7 @@ import store from '../store'
 
 import Sidebar from '../components/Sidebar'
 import Main from '../Main'
-
+import MessageInput from './MessageInput'
 import _ from "lodash"
 
 
@@ -13,7 +13,6 @@ function App() {
   
   return (
     <div className="App" >
-      {console.log("change to arr",_.values(contacts))}
 <Sidebar contacts={_.values(contacts)}/>
 <Main user={user} activeUserId={activeUserId}/>
     </div>
